@@ -12,10 +12,11 @@
   }])
   .controller('View1Ctrl', View1Ctrl);
 
-  View1Ctrl.$inject = ['$scope', '$resource', 'poller'];
+  View1Ctrl.$inject = ['$scope', '$resource', 'poller', 'teamService'];
 
-  function View1Ctrl($scope, $resource, poller) {
+  function View1Ctrl($scope, $resource, poller, teamService) {
 
+      $scope.tables = teamService.getTables();
       $scope.sellers = [];
 
       // Define your resource object.
