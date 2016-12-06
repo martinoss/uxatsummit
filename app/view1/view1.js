@@ -20,7 +20,7 @@
       $scope.sellers = [];
 
       // Define your resource object.
-      var myResource = $resource("http://192.168.85.103:8080/sellers");
+      var myResource = $resource("/sellers");
 
       // Get poller. This also starts/restarts poller.
       var myPoller = poller.get(myResource, { action: 'query' });
