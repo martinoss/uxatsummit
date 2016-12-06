@@ -39,7 +39,7 @@
         // 2. fill the first array with items from the second
         [].push.apply($scope.tables, mapped);
 
-        console.log('🐼🐼🐼🐼🐼 -- Result from server : ', res)
+        console.log('🐼🐼🐼🐼🐼 -- Result from server : ', sellers)
       });
   };
 

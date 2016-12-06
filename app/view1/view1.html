@@ -22,7 +22,7 @@
          </g>
          <g>
           <title>Layer 1</title>
-          <ellipse ng-repeat="table in tables" ry="{{radius}}" rx="{{radius}}" id="svg_20" cy="{{table.cy}}" cx="{{table.cx}}" stroke-width="1.5" stroke="#103184" fill="#3054ae"/>
+          <ellipse ng-repeat="table in tables track by $index" ry="{{table.radius}}" rx="{{table.radius}}" id="svg_20" cy="{{table.cy}}" cx="{{table.cx}}" stroke-width="1.5" stroke="#103184" fill="#3054ae"/>
          </g>
         </svg>
       </div>
