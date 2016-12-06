@@ -44,7 +44,7 @@ function getOrderedTables(sellers){
     for(var i = 0; i<tables.length; i++){
         for(var y = 0; y<sellers.length; y++){
             if(sellers[y].name == tables[i]){
-                ordertables.push({...sellers[y], id : i+1});
+                ordertables.push({name:sellers[y].name, cash:sellers[y].cash, online:sellers[y].online, id : i+1});
             }
         }
     }
