@@ -10,42 +10,40 @@
 
     var tables = [
         {name:"Shifting Shadows", cx:898 , cy:62},
-        {name:"MrBot", cx:898 , cy:64},
+        {name:"MrBot", cx:898 , cy:62},
         {name:"The Kittens", cx:862 , cy:213},
         {name:"Team IronMan", cx:862 , cy:213},
         {name:"Agile Farm", cx:722 , cy:278},
         {name:"Team Hugun", cx:722 , cy:278},
-        {name:"Licence-2-Code", cx:0 , cy:0},
-        {name:"Flash Puffins", cx:0 , cy:0},
-        {name:"GiveUsAnother10Minutes", cx:0 , cy:0},
-        {name:"------", cx:0 , cy:0},
-        {name:"Muhlen Kolsch", cx:0 , cy:0},
-        {name:"FC Digital", cx:0 , cy:0},
-        {name:"Brains", cx:0 , cy:0},
-        {name:"Loading…", cx:0 , cy:0},
-        {name:"Earth", cx:0 , cy:0},
-        {name:"Sky", cx:0 , cy:0},
-        {name:"Untabled", cx:0 , cy:0},
-        {name:"C-Void", cx:0 , cy:0},
-        {name:"Fritz", cx:0 , cy:0},
-        {name:"Optimus Prime", cx:0 , cy:0},
-        {name:"JägerMeister", cx:0 , cy:0},
-        {name:"Lotd", cx:0 , cy:0},
-        {name:"Propeller heads", cx:0 , cy:0},
-        {name:"Flush", cx:0 , cy:0},
-        {name:"The Collabs", cx:0 , cy:0},
-        {name:"Network Issues", cx:0 , cy:0},
-        {name:"React Team", cx:0 , cy:0},
-        {name:"Data Driven", cx:0 , cy:0},
-        {name:"Team 007", cx:0 , cy:0},
-        {name:"-----", cx:0 , cy:0},
-        {name:"FS_Society", cx:0 , cy:0},
-        {name:"Anonymous", cx:0 , cy:0},
-        {name:"Losse", cx:0 , cy:0},
-        {name:"-----", cx:0 , cy:0}];
+        {name:"Licence-2-Code", cx:604 , cy:351},
+        {name:"Flash Puffins", cx:604 , cy:351},
+        {name:"GiveUsAnother10Minutes", cx:455 , cy:352},
+        {name:"------", cx:455 , cy:352},
+        {name:"Muhlen Kolsch", cx:302 , cy:358},
+        {name:"FC Digital", cx:302 , cy:358},
+        {name:"Brains", cx:221 , cy:285},
+        {name:"Loading…", cx:221 , cy:285},
+        {name:"Earth", cx:66 , cy:218},
+        {name:"Sky", cx:66 , cy:218},
+        {name:"Untabled", cx:105 , cy:141},
+        {name:"C-Void", cx:105 , cy:141},
+        {name:"Fritz", cx:201 , cy:175},
+        {name:"Optimus Prime", cx:201 , cy:175},
+        {name:"JägerMeister", cx:307 , cy:113},
+        {name:"Lotd", cx:307 , cy:113},
+        {name:"Propeller heads", cx:331 , cy:213},
+        {name:"Flush", cx:331 , cy:213},
+        {name:"The Collabs", cx:454 , cy:233},
+        {name:"Network Issues", cx:454 , cy:233},
+        {name:"React Team", cx:565 , cy:212},
+        {name:"Data Driven", cx:565 , cy:212},
+        {name:"Team 007", cx:670 , cy:136},
+        {name:"-----", cx:670 , cy:136},
+        {name:"FS_Society", cx:764 , cy:66},
+        {name:"Anonymous", cx:764 , cy:66},
+        {name:"Losse", cx:545 , cy:96},
+        {name:"-----", cx:545 , cy:96}];
 
-    var sellers = 
-        [{"name":"Agile Farmer","cash":-1015.0,"online":false},{"name":"Anonymous","cash":-30.0,"online":true},{"name":"DataDriven","cash":-45.0,"online":true},{"name":"FlashPuffins","cash":-1935.0,"online":false},{"name":"GiveUsAnother10Minutes","cash":-1420.0,"online":false},{"name":"Licence-2-Kill","cash":1703.0,"online":true},{"name":"Losse","cash":-2370.0,"online":false},{"name":"MaskedCoach","cash":-2100.0,"online":false},{"name":"Mr.Reboot","cash":-515.0,"online":false},{"name":"MuehlenKoelsch","cash":-2415.0,"online":false},{"name":"NetworkIssues","cash":3986.0,"online":true},{"name":"NetworkIssuesScala","cash":455.0,"online":true},{"name":"React Team","cash":35.0,"online":true},{"name":"Shifting Shadows","cash":-255.0,"online":true},{"name":"Team007","cash":-49.0,"online":true},{"name":"TeamIronMan","cash":2824.0,"online":true},{"name":"The Collabs","cash":270.0,"online":true},{"name":"fs_society","cash":-480.0,"online":true},{"name":"hugun","cash":-1075.0,"online":false},{"name":"the-kittens","cash":-630.0,"online":false}];
 
     const radius = 31;
 
@@ -53,9 +51,7 @@
 
         var service = {
             getOrderedTables: getOrderedTables,
-            getTeamByTableNumber: getTeamByTableNumber,
             getRecMultiplierForTeamByTableNumber : getRecMultiplierForTeamByTableNumber,
-            createTablemap : createTablemap,
             getTables : getTables
         };
 
@@ -72,41 +68,56 @@
         function getOrderedTables(sellers){
             var ordertables = [];
             for(var i = 0; i<tables.length; i++){
+                var table = 'undefined';
                 for(var y = 0; y<sellers.length; y++){
                     if(sellers[y].name == tables[i].name){
-                        ordertables.push({name:sellers[y].name, cash:sellers[y].cash, online:sellers[y].online, id : i+1});
+                        table = {name:sellers[y].name, cash:sellers[y].cash, online:sellers[y].online, id : i+1, cx:tables[i].cx, cy:tables[i].cy, radius:55*getRecMultiplierForTeamByTableNumber(sellers, sellers[y].cash)};
                     }
                 }
+                if(table == 'undefined'){
+                    table = {name:tables[i].name, cash:0, online:false, id : i+1, cx:tables[i].cx, cy:tables[i].cy, radius:31*1};
+                }
+                ordertables.push(table);
             }
+            console.log(ordertables);
             return ordertables;
         }
 
-        function getTeamByTableNumber(tablenumber){
-            var ordertables = getOrderedTables(sellers);
-            const radius = 31;
-            for(var i = 0; i<ordertables.length; i++){
-                if(ordertables[i].id == tablenumber){
-                    return ordertables[i];
-                }
-            }
-        }
-
-        function getRecMultiplierForTeamByTableNumber(tablenumber){
-            var team = getTeamByTableNumber(tablenumber);
-            if(typeof team != 'undefined' && team.cash>1000){
-                return team.cash / 1000;
+        function getRecMultiplierForTeamByTableNumberOLD(cash){
+            if(cash>1000){
+                return cash / 1000;
             } else
                 return 1;
         }
-        function transformTable(tablenumber){
-            $(".table"+tablenumber).attr("ry",radius*getRecMultiplierForTeamByTableNumber(tablenumber));
-            $(".table"+tablenumber).attr("rx",radius*getRecMultiplierForTeamByTableNumber(tablenumber));
+
+        function getMaxCash(sellers){
+            var max = 0;
+            for(var y = 0; y<sellers.length; y++) {
+                if(max < sellers[y].cash){
+                    max = sellers[y].cash;
+                }
+            }
+            return max;
         }
 
-        function createTablemap(){
-            for(var i = 1; i<tables.length; i++){
-                transformTable(i);
+        function getMinCash(sellers){
+            var min = 0;
+            for(var y = 0; y<sellers.length; y++) {
+                if(min > sellers[y].cash){
+                    min = sellers[y].cash;
+                }
             }
+            return min;
+        }
+
+        function getRecMultiplierForTeamByTableNumber(sellers, current){
+            var min = getMinCash(sellers);
+            var max = getMaxCash(sellers);
+            var offset = 0;
+            if(min<0){
+                offset = -min;
+            }
+            return (current+offset) /(max + offset);
         }
 
 
