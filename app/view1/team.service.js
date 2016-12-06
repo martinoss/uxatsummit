@@ -68,18 +68,17 @@
         function getOrderedTables(sellers){
             var ordertables = [];
             for(var i = 0; i<tables.length; i++){
-                var table;
+                var table = undefined;
                 for(var y = 0; y<sellers.length; y++){
                     if(sellers[y].name == tables[i].name){
                         table = {name:sellers[y].name, cash:sellers[y].cash, online:sellers[y].online, id : i+1, cx:tables[i].cx, cy:tables[i].cy, radius:55*getRecMultiplierForTeamByTableNumber(sellers, sellers[y].cash)};
                     }
                 }
-                if(typeof table === 'undefined'){
+                if(!table){
                     table = {name:tables[i].name, cash:0, online:false, id : i+1, cx:tables[i].cx, cy:tables[i].cy, radius:10};
                 }
                 ordertables.push(table);
             }
-            console.log(ordertables);
             return ordertables;
         }
 
