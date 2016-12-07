@@ -67,11 +67,13 @@
 
         function getOrderedTables(sellers){
             var ordertables = [];
+            var min = getMinCash(sellers);
+            var max = getMaxCash(sellers);
             for(var i = 0; i<tables.length; i++){
                 var table = undefined;
                 for(var y = 0; y<sellers.length; y++){
                     if(sellers[y].name == tables[i].name){
-                        table = {name:sellers[y].name, cash:sellers[y].cash, online:sellers[y].online, id : i+1, cx:tables[i].cx, cy:tables[i].cy, radius:55*getRecMultiplierForTeamByTableNumber(sellers, sellers[y].cash)};
+                        table = {name:sellers[y].name, cash:sellers[y].cash, online:sellers[y].online, id : i+1, cx:tables[i].cx, cy:tables[i].cy, radius:55*getRecMultiplierForTeamByTableNumber(min, max, sellers[y].cash)};
                     }
                 }
                 if(!table){
@@ -80,13 +82,6 @@
                 ordertables.push(table);
             }
             return ordertables;
-        }
-
-        function getRecMultiplierForTeamByTableNumberOLD(cash){
-            if(cash>1000){
-                return cash / 1000;
-            } else
-                return 1;
         }
 
         function getMaxCash(sellers){
@@ -109,9 +104,7 @@
             return min;
         }
 
-        function getRecMultiplierForTeamByTableNumber(sellers, current){
-            var min = getMinCash(sellers);
-            var max = getMaxCash(sellers);
+        function getRecMultiplierForTeamByTableNumber(min, max, current){
             var offset = 0;
             if(min<0){
                 offset = -min;
@@ -119,8 +112,6 @@
             console.log((current+offset) /(max + offset));
             return (current+offset) /(max + offset);
         }
-
-
 
     }
 
