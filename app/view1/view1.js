@@ -17,12 +17,12 @@
   function View1Ctrl($scope, $resource, poller, teamService) {
 
       var sellers =
-          [{"name":"Agile Farmer","cash":-1015.0,"online":false},{"name":"Anonymous","cash":-30.0,"online":true},{"name":"DataDriven","cash":-45.0,"online":true},{"name":"FlashPuffins","cash":-1935.0,"online":false},{"name":"GiveUsAnother10Minutes","cash":-1420.0,"online":false},{"name":"Licence-2-Kill","cash":1703.0,"online":true},{"name":"Losse","cash":-2370.0,"online":false},{"name":"MaskedCoach","cash":-2100.0,"online":false},{"name":"Mr.Reboot","cash":-515.0,"online":false},{"name":"MuehlenKoelsch","cash":-2415.0,"online":false},{"name":"NetworkIssues","cash":3986.0,"online":true},{"name":"NetworkIssuesScala","cash":455.0,"online":true},{"name":"React Team","cash":35.0,"online":true},{"name":"Shifting Shadows","cash":-255.0,"online":true},{"name":"Team007","cash":-49.0,"online":true},{"name":"TeamIronMan","cash":2824.0,"online":true},{"name":"The Collabs","cash":270.0,"online":true},{"name":"fs_society","cash":-480.0,"online":true},{"name":"hugun","cash":-1075.0,"online":false},{"name":"the-kittens","cash":-630.0,"online":false}];
+          [{ name="Agile Farmer",  cash=0,  online=true},{ name="Anonymous",  cash=4560,  online=false},{ name="Datadriven",  cash=2060,  online=false},{ name="FlashPuffins",  cash=6200,  online=false},{ name="GiveUsAnother10Minutes",  cash=19390,  online=false},{ name="Licence-2-Code",  cash=4190,  online=false},{ name="Mr.Roboot",  cash=27625,  online=false},{ name="NetworkIssues",  cash=1015,  online=false},{ name="PTDDKings",  cash=1045,  online=false},{ name="React Team",  cash=3240,  online=false},{ name="Shifting_Shadows",  cash=17285,  online=false},{ name="Sky",  cash=1635,  online=true},{ name="Team007",  cash=10450,  online=true},{ name="The Collabs",  cash=2970,  online=false},{ name="UnexpectedChallenger",  cash=-55,  online=false},{ name="bot_shadows",  cash=0,  online=false},{ name="fs_Society",  cash=-15,  online=false},{ name="hugun",  cash=6640,  online=false},{ name="losse",  cash=0,  online=true},{ name="the-kittens",  cash=6370,  online=false}]
 
 
       $scope.tables = [];
 
-      // Define your resource object.
+      // Define yourobject.
       var myResource = $resource("/sellers");
 
       // Get poller. This also starts/restarts poller.
