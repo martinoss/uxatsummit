@@ -37,24 +37,15 @@
 <path opacity="0.38" d="M520.38,189.6v28.8h27.886c0,0-2.145-9.6-12.87-19.2C524.67,189.6,520.38,189.6,520.38,189.6z"/>
 <path opacity="0.38" d="M724.951,189.6v28.8h-27.886c0,0,2.146-9.6,12.87-19.2C720.661,189.6,724.951,189.6,724.951,189.6z"/>
 <path opacity="0.38" d="M669.18,189.6v28.8h27.886c0,0-2.145-9.6-12.87-19.2C673.47,189.6,669.18,189.6,669.18,189.6z"/>
-
-<g>
+ <!--ry="{{table.radius}}" rx="{{table.radius}}" id="svg_20" cy="{{table.cy}}" cx="{{table.cx}}" stroke-width="1.5" stroke="#103184" fill="{{table.online?'#3054ae':'#ff0000'}}-->
+<g ng-repeat="table in tables track by $index">
 	<defs>
-		<rect id="SVGID_1_" x="298.135" y="332.952" width="53.426" height="53.426"/>
+		<rect id="{{ 'rect_' + $index }}" x="298.135" y="332.952" width="53.426" height="53.426"/>
 	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	<clipPath id="{{ 'clip_' + $index }}">
+		<use xlink:href="{{ '#rect_' + $index }}"  overflow="visible"/>
 	</clipPath>
-	<circle clip-path="url(#SVGID_2_)" fill="#335AA6" cx="297.848" cy="359.665" r="27"/>
-</g>
-<g>
-	<defs>
-		<rect id="SVGID_3_" x="242.248" y="332.952" width="53.426" height="53.426"/>
-	</defs>
-	<clipPath id="SVGID_4_">
-		<use xlink:href="#SVGID_3_"  overflow="visible"/>
-	</clipPath>
-	<circle clip-path="url(#SVGID_4_)" fill="#335AA6" cx="295.961" cy="359.665" r="27"/>
+	<circle clip-path="{{ 'url(#clip_' + $index + ')'}}" fill="#335AA6" cx="297.848" cy="359.665" r="27"/>
 </g>
 <!--<g>
 	<defs>
