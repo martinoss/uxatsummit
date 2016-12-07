@@ -34,12 +34,13 @@
       myPoller.promise.then(null, null, function(sellers){
 
         var mapped = teamService.getOrderedTables(sellers);
+        console.log(mapped);
         // 1. reset the array while keeping its reference
         $scope.tables.length = 0;
         // 2. fill the first array with items from the second
         [].push.apply($scope.tables, mapped);
 
-        console.log('🐼🐼🐼🐼🐼 -- Result from server : ', sellers)
+        //console.log('🐼🐼🐼🐼🐼 -- Result from server : ', sellers)
       });
   };
 

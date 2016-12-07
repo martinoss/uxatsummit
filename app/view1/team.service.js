@@ -73,11 +73,19 @@
                 var table = undefined;
                 for(var y = 0; y<sellers.length; y++){
                     if(sellers[y].name == tables[i].name){
-                        table = {name:sellers[y].name, cash:sellers[y].cash, online:sellers[y].online, id : i+1, cx:tables[i].cx, cy:tables[i].cy, radius:55*getRecMultiplierForTeamByTableNumber(min, max, sellers[y].cash)};
+                        table = { 
+                            name:sellers[y].name, 
+                            cash:sellers[y].cash, 
+                            isWinning: sellers[y].cash === max,
+                            online:sellers[y].online, 
+                            id : i+1, 
+                            cx:tables[i].cx, 
+                            cy:tables[i].cy, 
+                            radius: 55*getRecMultiplierForTeamByTableNumber(min, max, sellers[y].cash)};
                     }
                 }
                 if(!table){
-                    table = {name:tables[i].name, cash:0, online:false, id : i+1, cx:tables[i].cx, cy:tables[i].cy, radius:10};
+                    table = {name:tables[i].name, cash:0, isWinning: false, online:false, id : i+1, cx:tables[i].cx, cy:tables[i].cy, radius:10};
                 }
                 ordertables.push(table);
             }
