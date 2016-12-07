@@ -39,13 +39,24 @@
 <path opacity="0.38" d="M669.18,189.6v28.8h27.886c0,0-2.145-9.6-12.87-19.2C673.47,189.6,669.18,189.6,669.18,189.6z"/>
  <!--ry="{{table.radius}}" rx="{{table.radius}}" id="svg_20" cy="{{table.cy}}" cx="{{table.cx}}" stroke-width="1.5" stroke="#103184" fill="{{table.online?'#3054ae':'#ff0000'}}-->
 <g ng-repeat="table in tables track by $index">
+<g ng-if="$index % 2 == 1">
 	<defs>
-		<rect id="{{ 'rect_' + $index }}" x="298.135" y="332.952" width="53.426" height="53.426"/>
+		<rect id="{{ 'rect_a_' + $index }}" x="298.135" y="332.952" width="{{ table.radius * 2 }}" height="{{ table.radius * 2 }}"/>
 	</defs>
-	<clipPath id="{{ 'clip_' + $index }}">
-		<use xlink:href="{{ '#rect_' + $index }}"  overflow="visible"/>
+	<clipPath id="{{ 'clip_a_' + $index }}">
+		<use xlink:href="{{ '#rect_a_' + $index }}"  overflow="visible"/>
 	</clipPath>
-	<circle clip-path="{{ 'url(#clip_' + $index + ')'}}" fill="#335AA6" cx="297.848" cy="359.665" r="27"/>
+	<circle clip-path="{{ 'url(#clip_a_' + $index + ')'}}" fill="#335AA6"  stroke-width="1.5" stroke="{{table.online?'#309640':'#ff0000'}}" cy="{{table.cy}}" cx="{{table.cx}}" r="{{table.radius}}"/>
+</g>
+<g ng-if="$index % 2 == 0">
+	<defs>
+		<rect id="{{ 'rect_a_' + $index }}" x="242.248" y="332.952" width="{{ table.radius * 2 }}" height="{{ table.radius * 2 }}"/>
+	</defs>
+	<clipPath id="{{ 'clip_a_' + $index }}">
+		<use xlink:href="{{ '#rect_a_' + $index }}"  overflow="visible"/>
+	</clipPath>
+	<circle clip-path="{{ 'url(#clip_a_' + $index + ')'}}" fill="#335AA6" stroke-width="1.5" stroke="{{table.online?'#309640':'#ff0000'}}"  cy="{{table.cy}}" cx="{{table.cx}}" r="{{table.radius}}"/>
+</g>
 </g>
 <!--<g>
 	<defs>
