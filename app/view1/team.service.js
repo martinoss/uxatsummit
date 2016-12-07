@@ -9,14 +9,14 @@
     teamService.$inject = [];
 
     var tables = [
-        {name:"Shifting Shadows", cx:893 , cy:320},
-        {name:"MrBot", cx:893 , cy:320},
-        {name:"The Kittens", cx:873 , cy:432},
-        {name:"Team IronMan", cx:873 , cy:432},
-        {name:"Agile Farm", cx:780 , cy:501},
-        {name:"Team Hugun", cx:780 , cy:501},
+        {name:"losse", cx:893 , cy:320},
+        {name:"----", cx:893 , cy:320},
+        {name:"Mr.Roboot", cx:873 , cy:432},
+        {name:"Shifting_Shadows", cx:873 , cy:432},
+        {name:"hugun", cx:780 , cy:501},
+        {name:"Agile Farmer", cx:780 , cy:501},
+        {name:"FlashPuffins", cx:699 , cy:562},
         {name:"Licence-2-Code", cx:699 , cy:562},
-        {name:"Flash Puffins", cx:699 , cy:562},
         {name:"GiveUsAnother10Minutes", cx:566 , cy:574},
         {name:"------", cx:566 , cy:574},
         {name:"Muhlen Kolsch", cx:425 , cy:569},
